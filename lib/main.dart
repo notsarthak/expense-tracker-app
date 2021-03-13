@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import "package:intl/intl.dart";
 
-import "./transaction.dart";
+import "./widgets/user_transaction.dart";
 
 void main() {
   runApp(MyApp());
@@ -21,25 +20,6 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  final List<Transaction> transactions = [
-    Transaction(
-      id: "t1",
-      title: "New Shoes",
-      amount: 69.99,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: "t2",
-      title: "Weekly Groceries",
-      amount: 16.53,
-      date: DateTime.now(),
-    ),
-  ];
-
-  // String titleInput, amountInput;
-  final titleController = TextEditingController();
-  final amountController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,91 +34,7 @@ class MyHomePage extends StatelessWidget {
             child: Text("Chart"),
           ),
         ),
-        Card(
-          child: Container(
-            margin: EdgeInsets.all(10),
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: <Widget>[
-                  TextField(
-                    decoration: InputDecoration(
-                      labelText: 'Title',
-                    ),
-                    // onChanged: (val) {
-                    //   titleInput = val;
-                    // },
-                    controller: titleController,
-                  ),
-                  TextField(
-                    decoration: InputDecoration(
-                      labelText: 'Amount',
-                    ),
-                    // onChanged: (val) => amountInput = val,
-                    controller: amountController,
-                  ),
-                  FlatButton(
-                    child: Text('ADD EXPENSE'),
-                    onPressed: () {
-                      // print(titleInput);
-                      // print(amountInput);
-                      print(titleController.text);
-                      print(amountController.text);
-                    },
-                    textColor: Colors.purple,
-                  )
-                ]),
-          ),
-        ),
-        Column(children: <Widget>[
-          ...transactions.map((tx) {
-            return Card(
-              child: Row(children: <Widget>[
-                Container(
-                  margin: EdgeInsets.symmetric(
-                    vertical: 10,
-                    horizontal: 15,
-                  ),
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.purple,
-                      width: 2,
-                    ),
-                  ),
-                  child: Text(
-                    '\$' + tx.amount.toString(),
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      color: Colors.purple,
-                    ),
-                  ),
-                ),
-                Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                        margin: EdgeInsets.only(bottom: 4.5),
-                        child: Text(
-                          tx.title,
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        DateFormat.yMMMMEEEEd().format(tx.date),
-                        style: TextStyle(
-                          color: Colors.grey[600],
-                          fontSize: 14,
-                        ),
-                      ),
-                    ]),
-              ]),
-            );
-          }).toList()
-        ]),
+        UserTransaction(),
       ]),
     );
   }
