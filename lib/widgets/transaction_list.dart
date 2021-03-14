@@ -10,55 +10,60 @@ class TransactionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: <Widget>[
-      ...transactions.map((tx) {
-        return Card(
-          child: Row(children: <Widget>[
-            Container(
-              margin: EdgeInsets.symmetric(
-                vertical: 10,
-                horizontal: 15,
-              ),
-              padding: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.purple,
-                  width: 2,
-                ),
-              ),
-              child: Text(
-                '\$' + tx.amount.toString(),
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  color: Colors.purple,
-                ),
-              ),
-            ),
-            Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.only(bottom: 4.5),
-                    child: Text(
-                      tx.title,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
+    return Container(
+      height: 400,
+      child: SingleChildScrollView(
+        child: Column(children: <Widget>[
+          ...transactions.map((tx) {
+            return Card(
+              child: Row(children: <Widget>[
+                Container(
+                  margin: EdgeInsets.symmetric(
+                    vertical: 10,
+                    horizontal: 15,
+                  ),
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.purple,
+                      width: 2,
                     ),
                   ),
-                  Text(
-                    DateFormat.yMMMMEEEEd().format(tx.date),
+                  child: Text(
+                    '\$' + tx.amount.toString(),
                     style: TextStyle(
-                      color: Colors.grey[600],
-                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: Colors.purple,
                     ),
                   ),
-                ]),
-          ]),
-        );
-      }).toList()
-    ]);
+                ),
+                Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsets.only(bottom: 4.5),
+                        child: Text(
+                          tx.title,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        DateFormat.yMMMMEEEEd().format(tx.date),
+                        style: TextStyle(
+                          color: Colors.grey[600],
+                          fontSize: 14,
+                        ),
+                      ),
+                    ]),
+              ]),
+            );
+          }).toList()
+        ]),
+      ),
+    );
   }
 }
