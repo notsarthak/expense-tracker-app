@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import "./widgets/transaction_list.dart";
 import "./widgets/new_transaction.dart";
 import "./models/transaction.dart";
+import "./widgets/chart.dart";
 
 void main() {
   runApp(MyApp());
@@ -100,10 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Container(
               width: double.infinity,
-              child: Card(
-                color: Colors.blue,
-                child: Text("Chart"),
-              ),
+              child: Chart(_userTransactions),
             ),
             TransactionList(_userTransactions),
           ],
