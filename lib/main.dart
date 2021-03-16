@@ -84,6 +84,20 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  List<Transaction> get _recentTransactions {
+    return _userTransactions.where(
+      (tx) {
+        return tx.date.isAfter(
+          DateTime.now().subtract(
+            Duration(
+              days: 7,
+            ),
+          ),
+        );
+      },
+    ).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -101,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Container(
               width: double.infinity,
-              child: Chart(_userTransactions),
+              child: Chart(_recentTransactions),
             ),
             TransactionList(_userTransactions),
           ],
