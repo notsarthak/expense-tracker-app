@@ -24,19 +24,25 @@ class Chart extends StatelessWidget {
               weekDay.year == recentTransactions[i].date.year)
             totalAmount += recentTransactions[i].amount;
         }
-        return {"day": DateFormat.E().format(weekDay), "amount": totalAmount};
+        return {
+          "day": DateFormat.E().format(weekDay).toString().substring(0, 1),
+          "amount": totalAmount
+        };
       },
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    print(groupedTransactionValues);
     return Card(
       elevation: 6,
       margin: EdgeInsets.all(10),
       child: Row(
-        children: <Widget>[],
+        children: <Widget>[
+          ...groupedTransactionValues.map((data) {
+            return;
+          }).toList(),
+        ],
       ),
     );
   }
