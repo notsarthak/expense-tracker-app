@@ -119,11 +119,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Container(
-              width: double.infinity,
-              child: Chart(_recentTransactions),
-            ),
+            Chart(_recentTransactions),
             TransactionList(_userTransactions, _deleteTransaction),
           ],
         ),
