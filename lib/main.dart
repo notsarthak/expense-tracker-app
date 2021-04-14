@@ -23,7 +23,8 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return //Platform.isIOS ? CupertinoApp(title: 'Expense Tracker', home: MyHomepage(), theme: CupertinoThemeData()) :
+        MaterialApp(
       title: 'Expense Tracker',
       theme: ThemeData(
         primarySwatch: Colors.purple,
@@ -159,7 +160,10 @@ class _MyHomePageState extends State<MyHomePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Show Chart'),
+                  Text(
+                    'Show Chart',
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
                   Switch.adaptive(
                     activeColor: Theme.of(context).accentColor,
                     value: _showChart,
