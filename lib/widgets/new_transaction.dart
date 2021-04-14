@@ -1,3 +1,6 @@
+import "dart:io";
+
+import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 import "package:intl/intl.dart";
 
@@ -52,6 +55,7 @@ class _NewTransactionState extends State<NewTransaction> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
+              //CupertinoTextField(placeholder: 'Title'),
               TextField(
                 decoration: InputDecoration(
                   labelText: 'Title',
@@ -78,16 +82,27 @@ class _NewTransactionState extends State<NewTransaction> {
                             : 'Picked Date: ${DateFormat.yMd().format(_selectedDate)}',
                       ),
                     ),
-                    FlatButton(
-                      onPressed: () => _presentDatePicker(),
-                      child: Text(
-                        'Chose Date',
-                        style: TextStyle(
-                          color: Theme.of(context).primaryColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
+                    Platform.isIOS
+                        ? CupertinoButton(
+                            onPressed: () => _presentDatePicker(),
+                            child: Text(
+                              'Chose Date',
+                              style: TextStyle(
+                                color: Theme.of(context).primaryColor,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          )
+                        : FlatButton(
+                            onPressed: () => _presentDatePicker(),
+                            child: Text(
+                              'Chose Date',
+                              style: TextStyle(
+                                color: Theme.of(context).primaryColor,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
                   ],
                 ),
               ),
