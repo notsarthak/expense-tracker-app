@@ -90,6 +90,7 @@ class TransactionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("build() TransactionList");
     return transactions.length == 0
         ? LayoutBuilder(
             builder: (ctx, constraints) {
