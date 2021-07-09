@@ -100,7 +100,7 @@ class TransactionList extends StatelessWidget {
                     "No expenses yet!",
                     style: Theme.of(context).textTheme.headline6,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Container(
@@ -121,7 +121,7 @@ class TransactionList extends StatelessWidget {
                   leading: CircleAvatar(
                     radius: 30,
                     child: Padding(
-                      padding: EdgeInsets.all(6),
+                      padding: const EdgeInsets.all(6),
                       child: FittedBox(
                         child: Text('\$${transactions[index].amount}'),
                       ),
@@ -136,15 +136,15 @@ class TransactionList extends StatelessWidget {
                   ),
                   trailing: MediaQuery.of(context).size.width > 400
                       ? FlatButton.icon(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.delete,
                           ),
-                          label: Text('Delete'),
+                          label: const Text('Delete'),
                           textColor: Theme.of(context).errorColor,
                           onPressed: () => deleteTx(transactions[index].id),
                         )
                       : IconButton(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.delete,
                           ),
                           onPressed: () => deleteTx(transactions[index].id),
