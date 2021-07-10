@@ -6,15 +6,47 @@ import "./adaptive_flat_button.dart";
 
 class NewTransaction extends StatefulWidget {
   final Function addTx;
-  NewTransaction(this.addTx);
+
+  NewTransaction(this.addTx) {
+    print("constructor NewTransaction Widget");
+  }
+
   @override
-  _NewTransactionState createState() => _NewTransactionState();
+  _NewTransactionState createState() {
+    print("createState NewTransaction Widget");
+    return _NewTransactionState();
+  }
 }
 
 class _NewTransactionState extends State<NewTransaction> {
   final _titleController = TextEditingController();
   final _amountController = TextEditingController();
   DateTime _selectedDate;
+
+  _NewTransactionState() {
+    print("constructor NewTransaction Widget State");
+  }
+
+  @override
+  void initState() {
+    //method used to make request to server/db for data
+    print("initState()");
+    super.initState();
+  }
+
+  @override
+  void didUpdateWidget(covariant NewTransaction oldWidget) {
+    //method used to make request to server/db for new data when for example the widget rebuilds and receives new id whose data is to be rendered
+    print("didUpdateWidget()");
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
+  void dispose() {
+    //dispose listeners to prevent memory leaks. This method runs when the widget is removed from the screen
+    print("dispose()");
+    super.dispose();
+  }
 
   void _submitData() {
     if (_amountController.text.isEmpty) return;
